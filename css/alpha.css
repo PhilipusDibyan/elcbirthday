@@ -1,0 +1,249 @@
+/* Wrapper (Pengelompokan) */
+.wrapper {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  position: relative;
+  animation: coverFade 3s ease forwards;
+}
+
+/* Pengaturan Karakter */
+.wrapper .char1 {
+  position: relative;
+  left: 15%;
+  top: 25%;
+  cursor: pointer;
+  opacity: 0;
+  animation: charFade 3s 1s ease forwards, hideType 2s 14s ease forwards;
+}
+
+.wrapper .char2 {
+  position: relative;
+  left: 10%;
+  top: 15%;
+  cursor: pointer;
+  opacity: 0;
+  animation: charFade 3s 15s ease forwards, hideType 2s 28s ease forwards;
+}
+
+
+/* Pengaturan Hover pada Karakter */
+.wrapper .char1:hover {
+  animation: shake 1s ease forwards, charFade 3s ease forwards;
+}
+.wrapper .char2:hover {
+  animation: shake 1s ease forwards, charFade 3s ease forwards;
+}
+
+
+/* Pengaturan Efek Ketik */
+.layoutcenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, -80%);
+  width: 500px;
+}
+
+.typing-animation,.typing-animation2 {
+  display: inline-block;
+  font: 30px/30px 'Kanit', sans-serif;
+  text-align: justify;
+  color: #952323;
+}
+
+.typing, .typing2{
+  display: inline-block;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  border-right: 2px solid #333; /* Membuat kursor berkedip */
+}
+
+.typing {
+  display: block;
+  animation: typing 4s 3s steps(100, end) forwards, blink-caret .8s step-end infinite;
+}
+
+.typing2 {
+  animation: typing 4s 8s steps(100, end) forwards, blink-caret .8s step-end infinite, hideType 2s 12s ease forwards;
+}
+
+.typing3, .typing4 {
+  opacity: 0;
+}
+
+.typing3 {
+  animation: fadeType 5s 16s ease;
+}
+
+.typing4 {
+  animation: fadeType 5s 22s ease;
+}
+
+/* Media Screen untuk Ponsel */
+@media screen and (max-width:576px) {
+  .wrapper {
+    position: relative;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .wrapper .char1 {
+    top: 15%;
+    left: 25%;
+    position: relative;
+    opacity: 0;
+    animation: shake 1s 2s ease forwards, hideType 2s 14s ease forwards;
+  }
+
+  .wrapper .char2 {
+    top: 15%;
+    left: 25%;
+    position: relative;
+    opacity: 0;
+    animation: shake 1s 15s ease forwards, hideType 2s 28s ease forwards;
+  }
+
+  .layoutcenter {
+    display: flex;
+    position: absolute;
+    top: 55%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+  }
+
+  .typing3, typing4{
+    position: relative;
+    top: 10%;
+  }
+}
+
+/* Media Screen untuk Layar Medium */
+@media screen and (max-width:1199px) {
+  .wrapper {
+    position: relative;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .wrapper .char1 {
+    width: 350px;
+    top: 10%;
+    left: 18%;
+    position: relative;
+    opacity: 0;
+    animation: shake 1s 2s ease forwards, hideType 2s 14s ease forwards;
+  }
+
+  
+  .wrapper .char2 {
+    width: 350px;
+    top: 5;
+    left: 25%;
+    position: relative;
+    opacity: 0;
+    animation: shake 1s 15s ease forwards, hideType 2s 28s ease forwards;
+  }
+
+  .layoutcenter {
+    display: flex;
+    position: absolute;
+    top: 57%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Animasi */
+@keyframes coverFade {
+  0% {
+    background-color: #000;
+  }
+  100% {
+    background-color: rgb(238, 201, 203);
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@keyframes charFade {
+  To {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  10% {
+    opacity: .3;
+  }
+  20% {
+    opacity: .5;
+  }
+  25% {
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+    opacity: .5;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #333;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hideType {
+  to {
+    opacity: 0;
+    overflow: hidden;
+  } 
+}
+
+
+@keyframes fadeType{
+  0%{
+    opacity: .5;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: .5;
+  }
+}
